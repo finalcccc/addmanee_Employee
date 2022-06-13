@@ -35,6 +35,7 @@ class Order_Model_upload {
   String? Employee_ID;
   int? amouttotal;
   int? sumtotal;
+  String? Staustus;
   var Ditell = [];
   Timestamp? date;
 
@@ -45,6 +46,7 @@ class Order_Model_upload {
     Employee_ID = v['Employee_ID'];
     amouttotal = v['amouttotal'];
     Ditell = v['Ditell'];
+    Staustus =v['Staustus'];
     date = v['date'];
     nameCutommer = v['nameCutommer'];
     tel = v['tel'];
@@ -60,6 +62,7 @@ class Order_Model_upload {
         'amouttotal': amouttotal,
         'sumtotal': sumtotal,
         'Ditell': Ditell,
+        'Staustus':Staustus??'ລໍຖ້າ',
         'date': DateTime.now()
       };
 }
