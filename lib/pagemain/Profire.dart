@@ -20,7 +20,7 @@ class _ProfileState extends State<Profile> {
           backgroundColor: element.main,
           leading: element.BackPage(context),
         title: Text(
-            element.p2,
+            element.p4,
             style: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
