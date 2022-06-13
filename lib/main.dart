@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled4/Order/Cart.dart';
 import 'package:untitled4/Order/Get_order.dart';
+import 'package:untitled4/notifire/employeeNotifire.dart';
 import 'package:untitled4/route/router.dart';
 import 'package:untitled4/splashScreen%20.dart';
 
@@ -24,6 +25,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => CategoryNotifire()),
       ChangeNotifierProvider(create: (_) => ProductNotifire()),
       ChangeNotifierProvider(create: (_) => Cartnotifire()),
+      ChangeNotifierProvider(create: (_) => EmployeeNotifire()),
     ],
     child: const MyApp(),
   ));
