@@ -35,11 +35,11 @@ class _MenuState extends State<Menu> {
           children: [
             element.MenuButton(
                 context, route.Get_oerder, Icons.shop, element.main, element.p1),
-            element.MenuButton(context, route.register, Icons.airplay,
+            element.MenuButton(context, route.m_orders, Icons.airplay,
                 element.Indigo, element.p2),
             element.MenuButton(context, route.m_orders, Icons.border_color,
                 element.ocean, element.p3),
-            element.MenuButton(context, route.product, Icons.article_rounded,
+            element.MenuButton(context, route.Profile, Icons.article_rounded,
                 element.sky, element.p4),
           ],
         ),
@@ -63,7 +63,7 @@ class _MenuState extends State<Menu> {
             ),
           ),
           buildListTile(element.p1, route.Get_oerder),
-          buildListTile(element.p2, route.register),
+          buildListTile(element.p2, route.Profile),
           buildListTile(element.p3, route.m_orders),
           buildListTile(element.p4, route.product),
         ],

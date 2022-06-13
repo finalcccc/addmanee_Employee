@@ -22,7 +22,7 @@ class EmployeeData {
   });
   static List<String> positoin = ['Admin', 'Sale'];
   EmployeeData.frommap(Map<String, dynamic> value) {
-    name = value['id'];
+    id = value['id'];
     name = value['name'];
     email = value['email'];
     password = value['password'];

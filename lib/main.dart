@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:untitled4/Order/Cart.dart';
 import 'package:untitled4/Order/Get_order.dart';
 import 'package:untitled4/notifire/employeeNotifire.dart';
+import 'package:untitled4/pagemain/Profire.dart';
 import 'package:untitled4/route/router.dart';
 import 'package:untitled4/splashScreen%20.dart';
 
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         route.Get_oerder: (BuildContext context) => const Get_Order(),
         route.Cart: (BuildContext context) => const Cart(),
+        route.Profile: (BuildContext context) => const Profile(),
       },
     );
   }
