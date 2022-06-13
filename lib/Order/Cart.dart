@@ -47,6 +47,7 @@ class _CartState extends State<Cart> {
                   child: Padding(
                     padding: const EdgeInsets.all(10),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
@@ -59,28 +60,27 @@ class _CartState extends State<Cart> {
                                   height: 120,
                                   fit: BoxFit.fitWidth,
                                 ),
-                                Text(
-                                    'ລາຄາລວມ:${NumberFormat.decimalPattern().format(cart.Carts[index].sum)}'),
                               ],
                             ),
                             Column(
                               children: [
+
                                 Row(
                                   children: [
                                     SizedBox(
-                                      width: 90,
+                                      width: 120,
                                       height: 40,
-                                      child: Expanded(
                                         child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                                 '${cart.Cartlist[index].Product!.nameProduct}'),
                                             Text(
                                                 'ລາຄາ:${NumberFormat.decimalPattern().format(cart.price[index])}'),
                                           ],
-                                        ),
                                       ),
                                     ),
+
                                     TextButton(
                                         onPressed: () {
                                           cart.sum(index);
@@ -94,20 +94,30 @@ class _CartState extends State<Cart> {
                                         child: const Text('ລົບ')),
                                   ],
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 110),
-                                  child: IconButton(
-                                    onPressed: () {
-                                      cart.remove(index);
-                                    },
-                                    icon: const Icon(Icons.delete),
-                                    color: Colors.red,
-                                  ),
+
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 120,
+                                      ),
+                                    Container(
+                                      child: IconButton(
+                                        onPressed: () {
+                                          cart.remove(index);
+                                        },
+                                        icon: const Icon(Icons.delete),
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
+
                           ],
                         ),
+                        Text('ລາຄາລວມ:${NumberFormat.decimalPattern().format(cart.Carts[index].sum)}'),
                       ],
                     ),
                   ),
