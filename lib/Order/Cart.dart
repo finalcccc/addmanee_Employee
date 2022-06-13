@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -24,11 +23,11 @@ class _CartState extends State<Cart> {
   void initState() {
     super.initState();
     Productfacing();
-
   }
 
   Future Productfacing() async {
-    CategoryNotifire category = Provider.of<CategoryNotifire>(context, listen: false);
+    CategoryNotifire category =
+        Provider.of<CategoryNotifire>(context, listen: false);
     await GetCategoryData(category);
   }
 
@@ -52,7 +51,7 @@ class _CartState extends State<Cart> {
                         Row(
                           children: [
                             Column(
-                              crossAxisAlignment:CrossAxisAlignment.start ,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.network(
                                   '${cart.Cartlist[index].Product!.image}',
@@ -60,16 +59,28 @@ class _CartState extends State<Cart> {
                                   height: 120,
                                   fit: BoxFit.fitWidth,
                                 ),
-                                Text('${cart.Cartlist[index].Product!.nameProduct}'),
-                                Text('ລາຄາ / ລາຍການ: \n${NumberFormat.decimalPattern().format(cart.price[index])}'),
-                                Text('ລາຄາ: \n${NumberFormat.decimalPattern().format(cart.Carts[index].sum)}')
+                                Text(
+                                    'ລາຄາລວມ:${NumberFormat.decimalPattern().format(cart.Carts[index].sum)}'),
                               ],
                             ),
-                            const SizedBox(width:90),
                             Column(
                               children: [
                                 Row(
                                   children: [
+                                    SizedBox(
+                                      width: 90,
+                                      height: 40,
+                                      child: Expanded(
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                                '${cart.Cartlist[index].Product!.nameProduct}'),
+                                            Text(
+                                                'ລາຄາ:${NumberFormat.decimalPattern().format(cart.price[index])}'),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                     TextButton(
                                         onPressed: () {
                                           cart.sum(index);
@@ -83,19 +94,20 @@ class _CartState extends State<Cart> {
                                         child: const Text('ລົບ')),
                                   ],
                                 ),
-                                IconButton(
-                                  onPressed: () {
-                                    cart.remove(index);
-                                  },
-                                  icon: const Icon(Icons.delete),
-                                  color: Colors.red,
+                                Container(
+                                  margin: EdgeInsets.only(left: 110),
+                                  child: IconButton(
+                                    onPressed: () {
+                                      cart.remove(index);
+                                    },
+                                    icon: const Icon(Icons.delete),
+                                    color: Colors.red,
+                                  ),
                                 ),
-
                               ],
                             ),
                           ],
                         ),
-
                       ],
                     ),
                   ),
@@ -105,10 +117,10 @@ class _CartState extends State<Cart> {
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-                primary: element.main,
-              ),
+              primary: element.main,
+            ),
             onPressed: () {
-           //   cart.Refres();
+              //   cart.Refres();
               _Dialog(cart);
             },
             child: const Text(
@@ -120,19 +132,17 @@ class _CartState extends State<Cart> {
             height: 100,
             width: 400,
             decoration: const BoxDecoration(),
-            child:  Row(
+            child: Row(
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10, left: 55),
-                  child: Text('ຈຳນວນ: ' '${ cart.amoultoal} ແກັດ'  ),
-
+                  child: Text('ຈຳນວນ: ' '${cart.amoultoal} ແກັດ'),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10, left: 55),
-                  child: Text('ລາຄາລວມ: ' '${ NumberFormat.decimalPattern().format(cart.sumltoal)} ກີບ'  ),
-
+                  child: Text('ລາຄາລວມ: '
+                      '${NumberFormat.decimalPattern().format(cart.sumltoal)} ກີບ'),
                 ),
-
               ],
             ),
           ),
@@ -144,10 +154,9 @@ class _CartState extends State<Cart> {
                   primary: element.main,
                   shape: const StadiumBorder(),
                   padding: const EdgeInsets.symmetric(vertical: 16)),
-              onPressed: () async{
-               await Upload_Order(cart,product,emp);
-               _key_import.currentState!.reset();
-
+              onPressed: () async {
+                await Upload_Order(cart, product, emp);
+                _key_import.currentState!.reset();
               },
               child: const Text(
                 "ສັ່ງຊື້",
@@ -160,7 +169,6 @@ class _CartState extends State<Cart> {
       ),
     );
   }
-
 
   final GlobalKey<FormState> _key_import = GlobalKey<FormState>();
   _Dialog(Cartnotifire cart) {
@@ -204,14 +212,15 @@ class _CartState extends State<Cart> {
                                     .primaryColor
                                     .withOpacity(0.1),
                                 filled: true,
-                                prefixIcon: const Icon(Icons.person_remove_sharp),
+                                prefixIcon:
+                                    const Icon(Icons.person_remove_sharp),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
                                   borderSide: BorderSide.none,
                                 ),
                               ),
-                              onSaved: ( _name) {
-                                 cart.nameCutomer =_name;
+                              onSaved: (_name) {
+                                cart.nameCutomer = _name;
                               },
                               validator: (cost) {
                                 if (cost!.isEmpty) {
@@ -240,7 +249,7 @@ class _CartState extends State<Cart> {
                               ),
                               keyboardType: TextInputType.number,
                               onSaved: (_tel) {
-                                  cart.tel = int.parse(_tel!);
+                                cart.tel = int.parse(_tel!);
                               },
                               validator: (amout) {
                                 if (amout!.isEmpty) {
@@ -270,7 +279,7 @@ class _CartState extends State<Cart> {
                                   ),
                                 ),
                                 onSaved: (_address) {
-                                  cart.address =_address;
+                                  cart.address = _address;
                                 },
                                 validator: (cost) {
                                   if (cost!.isEmpty) {
@@ -292,8 +301,7 @@ class _CartState extends State<Cart> {
                                 onPressed: () async {
                                   if (_key_import.currentState!.validate()) {
                                     _key_import.currentState!.save();
-
-                                   }
+                                  }
                                 },
                               ),
                             ),
@@ -309,4 +317,3 @@ class _CartState extends State<Cart> {
     );
   }
 }
-
