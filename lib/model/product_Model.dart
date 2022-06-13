@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 class product_Model {
   String? id;
   String? nameProduct;

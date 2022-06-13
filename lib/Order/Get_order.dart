@@ -1,7 +1,7 @@
 
-import 'dart:math';
+// ignore_for_file: camel_case_types, non_constant_identifier_names, sized_box_for_whitespace, avoid_unnecessary_containers, prefer_if_null_operators
 
-import 'package:flutter/cupertino.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';

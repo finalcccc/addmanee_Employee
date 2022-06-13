@@ -1,0 +1,160 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:untitled4/celement/elements.dart';
+import 'package:untitled4/notifire/employeeNotifire.dart';
+
+class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  @override
+  Widget build(BuildContext context) {
+    EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: element.main,
+        leading: element.BackPage(context),
+        title: Text(
+          element.p4,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            height: 350,
+            width: double.infinity,
+            alignment: Alignment.center,
+            margin: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10), //border corner radius
+              boxShadow: [
+                BoxShadow(
+                  color: element.main.withOpacity(0.2), //color of shadow
+                  spreadRadius: 5, //spread radius
+                  blurRadius: 7, // blur radius
+                  offset: const Offset(0, 2), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Card(
+              shadowColor: Colors.blue,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Card(
+                      child: Row(
+                        children: [
+                          const Text(
+                            'ລະຫັດ: ',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Text('${ emp.CurrentEmployee_loco!.id}'),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Card(
+                      child: Row(
+                        children: [
+                          const Text(
+                            'ຊື່: ',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Text('${emp.CurrentEmployee_loco!.name}'),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Card(
+                      child: Row(
+                        children: [
+                          const Text(
+                            'ເບີໂທ: ',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Text('${emp.CurrentEmployee_loco!.tel}'),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Card(
+                      child: Row(
+                        children: [
+                          const Text(
+                            'ອີເມວ: ',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Text('${emp.CurrentEmployee_loco!.email}'),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Card(
+                      child: Row(
+                        children: [
+                          const Text(
+                            'ທີ່ຢູ່: ',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Text('${emp.CurrentEmployee_loco!.address}'),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Card(
+                      child: Row(
+                        children: [
+                          const Text(
+                            'ຕຳເເໜ່ງ: ',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          Text('${emp.CurrentEmployee_loco!.position}'),
+                          const SizedBox(height: 10),
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.edit),
+                      iconSize: 40,
+                      color: element.main,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        )
+      ),
+
+    );
+  }
+}

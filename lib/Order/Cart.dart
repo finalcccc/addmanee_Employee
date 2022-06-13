@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: non_constant_identifier_names, no_leading_underscores_for_local_identifiers, prefer_is_empty, sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -64,23 +65,25 @@ class _CartState extends State<Cart> {
                             ),
                             Column(
                               children: [
-
                                 Row(
                                   children: [
                                     SizedBox(
-                                      width: 120,
+                                      width: 112,
                                       height: 40,
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                                '${cart.Cartlist[index].Product!.nameProduct}'),
-                                            Text(
-                                                'ລາຄາ:${NumberFormat.decimalPattern().format(cart.price[index])}'),
-                                          ],
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(children: [
+                                            const Text(
+                                                'ຊື່: ',style: TextStyle(fontWeight: FontWeight.bold),),
+                                      Text('${cart.Cartlist[index].Product!.nameProduct}'),
+                                          ],),
+                                          Text(
+                                              'ລາຄາ: ${NumberFormat.decimalPattern().format(cart.price[index])} ກີບ'),
+                                        ],
                                       ),
                                     ),
-
                                     TextButton(
                                         onPressed: () {
                                           cart.sum(index);
@@ -94,30 +97,30 @@ class _CartState extends State<Cart> {
                                         child: const Text('ລົບ')),
                                   ],
                                 ),
-
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(
-                                      width: 120,
-                                      ),
-                                    Container(
-                                      child: IconButton(
-                                        onPressed: () {
-                                          cart.remove(index);
-                                        },
-                                        icon: const Icon(Icons.delete),
-                                        color: Colors.red,
-                                      ),
+                                    const SizedBox(width: 120),
+                                    IconButton(
+                                      onPressed: () {
+                                        cart.remove(index);
+                                      },
+                                      icon: const Icon(Icons.delete),
+                                      color: Colors.red,
                                     ),
                                   ],
                                 ),
                               ],
                             ),
-
                           ],
                         ),
-                        Text('ລາຄາລວມ:${NumberFormat.decimalPattern().format(cart.Carts[index].sum)}'),
+                       Row(
+                         children: [
+                          const  Text(
+                               'ລາຄາລວມ: ',style: TextStyle(fontWeight: FontWeight.bold),),
+                           Text('${NumberFormat.decimalPattern().format(cart.Carts[index].sum)} ກີບ'),
+                         ],
+                       )
                       ],
                     ),
                   ),
@@ -125,33 +128,50 @@ class _CartState extends State<Cart> {
               },
             ),
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: element.main,
-            ),
-            onPressed: () {
-              //   cart.Refres();
-              _Dialog(cart);
-            },
-            child: const Text(
-              'ເພີ່ມທີ່ຢູ່',
-              style: TextStyle(fontSize: 20),
-            ),
-          ),
           Container(
-            height: 100,
-            width: 400,
+            height: 60,
+            width: 370,
             decoration: const BoxDecoration(),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10, left: 55),
-                  child: Text('ຈຳນວນ: ' '${cart.amoultoal} ແກັດ'),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10, left: 20),
+                        child: Text('ຈຳນວນ: ' '${cart.amoultoal} ແກັດ'),
+                      ),
+                      Padding(
+                          padding: const EdgeInsets.only(bottom: 10, left: 20),
+                          child: Row(
+                            children: [
+                              const Text(
+                                'ລາຄາລວມ: ',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                  '${NumberFormat.decimalPattern().format(cart.sumltoal)} ກີບ'),
+                            ],
+                          )),
+                    ],
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 10, left: 55),
-                  child: Text('ລາຄາລວມ: '
-                      '${NumberFormat.decimalPattern().format(cart.sumltoal)} ກີບ'),
+                  padding: const EdgeInsets.only(bottom: 10, right: 20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: element.main,
+                    ),
+                    onPressed: () {
+                      _Dialog(cart);
+                    },
+                    child: const Text(
+                      'ເພີ່ມທີ່ຢູ່',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -162,8 +182,9 @@ class _CartState extends State<Cart> {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                   primary: element.main,
-                  shape: const StadiumBorder(),
-                  padding: const EdgeInsets.symmetric(vertical: 16)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  padding: const EdgeInsets.symmetric(vertical: 14)),
               onPressed: () async {
                 await Upload_Order(cart, product, emp);
                 _key_import.currentState!.reset();
@@ -198,9 +219,9 @@ class _CartState extends State<Cart> {
               children: [
                 Form(
                     key: _key_import,
-                    child: Container(
+                    child: SizedBox(
                       width: 400,
-                      height: 530,
+                      height: 420,
                       child: Card(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -209,10 +230,10 @@ class _CartState extends State<Cart> {
                               padding: EdgeInsets.only(top: 10, left: 25),
                               child: Text(
                                 'ເພີ່ມທີ່ຢູ່ລູກຄ້າ',
-                                style: TextStyle(fontSize: 30),
+                                style: TextStyle(fontSize: 25),
                               ),
                             ),
-                            const SizedBox(height: 15),
+                            const SizedBox(height: 40),
                             ////////////////////////////////////////////////
                             TextFormField(
                               initialValue: cart.nameCutomer,
@@ -225,7 +246,7 @@ class _CartState extends State<Cart> {
                                 prefixIcon:
                                     const Icon(Icons.person_remove_sharp),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(18),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide.none,
                                 ),
                               ),
@@ -253,7 +274,7 @@ class _CartState extends State<Cart> {
                                 filled: true,
                                 prefixIcon: const Icon(Icons.phone),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(18),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide.none,
                                 ),
                               ),
@@ -273,7 +294,7 @@ class _CartState extends State<Cart> {
                             const SizedBox(height: 10),
                             ////////////////////////////////////////////////
                             Container(
-                              height: 90,
+                              height: 80,
                               child: TextFormField(
                                 initialValue: cart.address,
                                 decoration: InputDecoration(
@@ -284,7 +305,7 @@ class _CartState extends State<Cart> {
                                   filled: true,
                                   prefixIcon: const Icon(Icons.home),
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(18),
+                                    borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide.none,
                                   ),
                                 ),
@@ -301,13 +322,18 @@ class _CartState extends State<Cart> {
                                 },
                               ),
                             ),
-                            const SizedBox(height: 40),
+                            const SizedBox(height: 10),
 
                             Container(
                               width: 300,
-                              height: 50,
+                              height: 55,
                               child: ElevatedButton(
-                                child: const Text('ບັນທືກ'),
+                                child: const Text(
+                                  'ບັນທືກ',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
                                 onPressed: () async {
                                   if (_key_import.currentState!.validate()) {
                                     _key_import.currentState!.save();
