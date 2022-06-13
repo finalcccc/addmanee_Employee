@@ -5,10 +5,12 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled4/api/Upload_DAta/Upload_Order.dart';
 import 'package:untitled4/celement/elements.dart';
+import 'package:untitled4/notifire/employeeNotifire.dart';
 
 import '../api/Get_product.dart';
 import '../notifire/Cartnotififire.dart';
 import '../notifire/categoryNotifire.dart';
+import '../notifire/productNotifire.dart';
 
 class Cart extends StatefulWidget {
   const Cart({Key? key}) : super(key: key);
@@ -33,6 +35,8 @@ class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     Cartnotifire cart = Provider.of<Cartnotifire>(context);
+    ProductNotifire product = Provider.of<ProductNotifire>(context);
+    EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
     return Scaffold(
       body: Column(
         children: [
@@ -140,8 +144,10 @@ class _CartState extends State<Cart> {
                   primary: element.main,
                   shape: const StadiumBorder(),
                   padding: const EdgeInsets.symmetric(vertical: 16)),
-              onPressed: () {
-               Upload_Order(cart);
+              onPressed: () async{
+               await Upload_Order(cart,product,emp);
+               _key_import.currentState!.reset();
+
               },
               child: const Text(
                 "ສັ່ງຊື້",

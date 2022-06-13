@@ -18,6 +18,16 @@ class Cartnotifire with ChangeNotifier{
   int sumltoal=0;
   UnmodifiableListView<CartDetailData>get Cartlist => UnmodifiableListView(Carts);
 
+Refresh(){
+  Carts;
+  price;
+  amoul;
+  amoultoal;
+  sumltoal;
+  Procartcart;
+  notifyListeners();
+}
+
   cecks(){
     amoultoal++;
     CartDetailData f=  CartDetailData(Procartcart, 1,Procartcart!.price??0);
