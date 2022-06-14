@@ -10,6 +10,7 @@ import 'package:untitled4/notifire/productNotifire.dart';
 import 'package:untitled4/route/router.dart';
 
 import '../api/Get_product.dart';
+import '../api/widget/widgetShearch.dart';
 import '../notifire/Cartnotififire.dart';
 import '../notifire/categoryNotifire.dart';
 
@@ -62,9 +63,8 @@ class _Get_OrderState extends State<Get_Order> {
             fontWeight: FontWeight.bold,
           ),
         ),
-     //   bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນສິນຄ້າ"),
-       // leading: element().RoutePageBack(context, const Menu()),
         actions: [element.CartButton(context,route.Cart)],
+        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນສິນຄ້າ"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -123,7 +123,7 @@ class _Get_OrderState extends State<Get_Order> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               margin: const EdgeInsets.symmetric(horizontal: 5),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(10),
                   color: colortype != true ? element.main : Colors.blue),
               child: Row(
                 children: [
@@ -275,7 +275,9 @@ Dailog(Cartnotifire Carts, context) {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       primary: element.main,
-                      shape: const StadiumBorder(),
+                      shape:RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)
+                      ),
                       padding: const EdgeInsets.symmetric(vertical: 16)),
                   onPressed: () {
                     Carts.cecks();

@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: non_constant_identifier_names, avoid_function_literals_in_foreach_calls, await_only_futures
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';

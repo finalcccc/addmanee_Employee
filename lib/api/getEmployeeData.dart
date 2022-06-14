@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls, non_constant_identifier_names, unused_local_variable, avoid_print, file_names
+// ignore_for_file: avoid_function_literals_in_foreach_calls, non_constant_identifier_names, unused_local_variable, avoid_print, file_names, unnecessary_brace_in_string_interps, await_only_futures
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/Employee_Model.dart';

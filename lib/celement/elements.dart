@@ -31,7 +31,10 @@ class element {
     Cartnotifire amoutotal = Provider.of<Cartnotifire>(context);
     return Row(
       children: [
-        Text('${amoutotal.Cartlist.length == 0?'':amoutotal.Cartlist.length}',style: TextStyle(color: Colors.white),),
+        Text(
+          '${amoutotal.Cartlist.length == 0 ? '' : amoutotal.Cartlist.length}',
+          style: const TextStyle(color: Colors.white),
+        ),
         IconButton(
             onPressed: () {
               Navigator.pushNamed(context, route);
@@ -40,8 +43,6 @@ class element {
       ],
     );
   }
-
-
 
   // option
   static MenuButton(
@@ -112,8 +113,6 @@ class element {
       },
     );
   }
-
-
 
   void showdialog(BuildContext context, {String? title, String? content}) {
     showDialog(
