@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled4/Order/Cart.dart';
 import 'package:untitled4/Order/Get_order.dart';
+import 'package:untitled4/Order/managerOrderByCustomer.dart';
+import 'package:untitled4/notifire/OrderNotifire.dart';
 import 'package:untitled4/notifire/employeeNotifire.dart';
 import 'package:untitled4/profile/Profire.dart';
 import 'package:untitled4/route/router.dart';
@@ -27,6 +29,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => ProductNotifire()),
       ChangeNotifierProvider(create: (_) => Cartnotifire()),
       ChangeNotifierProvider(create: (_) => EmployeeNotifire()),
+      ChangeNotifierProvider(create: (_) => Order_Notifire()),
     ],
     child: const MyApp(),
   ));
@@ -50,6 +53,7 @@ class MyApp extends StatelessWidget {
         route.Get_oerder: (BuildContext context) => const Get_Order(),
         route.Cart: (BuildContext context) => const Cart(),
         route.Profile: (BuildContext context) => const Profile(),
+        route.managerOrder: (BuildContext context) => const ManagerOrderByCustomer(),
       },
     );
   }
