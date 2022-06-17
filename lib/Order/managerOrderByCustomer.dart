@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -71,7 +73,6 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                                 ],
                               ),
                             ),
-                            Staustus(order, index),
                             Text(
                               'ຊື່ລູກຄ້າ: ${order.Order[index].nameCutommer} ແກັດ',
                               style: const TextStyle(fontSize: 16),
@@ -88,10 +89,30 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                               'ຈຳນວນທັງໝົດ: ${order.Order[index].amouttotal} ແກັດ',
                               style: const TextStyle(fontSize: 16),
                             ),
-                            Text(
-                              'ລາຄາລວມ: ${NumberFormat.decimalPattern().format(order.Order[index].sumtotal)} ກີບ',
-                              style: const TextStyle(fontSize: 16),
-                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: Row(
+                                  children: [
+                                    const Text(
+                                      'ລາຄາລວມ:',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    Text(
+                                      ' ${NumberFormat.decimalPattern().format(order.Order[index].sumtotal)} ',
+                                      style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    const Text(
+                                      'ກີບ',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                  ],
+                                )),
+                                Staustus(order, index),
+                              ],
+                            )
                           ]),
                     )),
               ),
@@ -106,21 +127,21 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
             onPressed: () {
               order.Curren_Order = order.Order[index];
             },
-            child: Text('${order.Order[index].Staustus}'),
             style: ElevatedButton.styleFrom(
-              primary: Colors.red,
+              primary: Colors.cyan,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
             ),
+            child: Text('${order.Order[index].Staustus}'),
           )
         : ElevatedButton(
             onPressed: () {},
-            child: Text('${order.Order[index].Staustus}'),
             style: ElevatedButton.styleFrom(
               primary: Colors.green,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
             ),
+            child: Text('${order.Order[index].Staustus}'),
           );
   }
 }

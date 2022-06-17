@@ -29,7 +29,7 @@ class _View_orderState extends State<view_order> {
       body: Column(
         children: [
           Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(10),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -39,18 +39,34 @@ class _View_orderState extends State<view_order> {
                       children: [
                         Row(
                           children: [
-                            const Text('ລະຫັດສັ່ງຊື້ :',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16)),
-                            Text(
-                              ' ${order.Curren_Order!.id}',
-                              style: const TextStyle(fontSize: 16),
+                            Row(
+                              children: [
+                                const Text('ລະຫັດສັ່ງຊື້:',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16)),
+                                Text(
+                                  '${order.Curren_Order!.id}',
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                                // const Text(
+                                //   'ວັນທີ: ',
+                                //   style: TextStyle(
+                                //       fontSize: 16,
+                                //       fontWeight: FontWeight.bold),
+                                // ),
+                                Text(
+                                    '      ${order.Curren_Order!.date!.toDate().toString().substring(0, 10)}',
+                                    style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold)),
+                              ],
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            const Text('ຊື່ລູກຄ້າ :',
+                            const Text('ຊື່ລູກຄ້າ:',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16)),
                             Text(
@@ -62,7 +78,7 @@ class _View_orderState extends State<view_order> {
                         Row(
                           children: [
                             const Text(
-                              'ເບີໂທ: ',
+                              'ເບີໂທ:',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
@@ -73,20 +89,7 @@ class _View_orderState extends State<view_order> {
                         Row(
                           children: [
                             const Text(
-                              'ວັນທີ: ',
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                                '${order.Curren_Order!.date!.toDate().toString().substring(0, 10)}',
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            const Text(
-                              'ທີ່ຢຸ່ :',
+                              'ທີ່ຢູ່:',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
@@ -221,30 +224,39 @@ class _View_orderState extends State<view_order> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
                         const Text(
                           'ຈຳນວນລວມ :',
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 17),
                         ),
                         Text(
-                          ' ${order.Curren_Order!.amouttotal} ເເກັດ',
-                          style: const TextStyle(fontSize: 17),
+                          ' ${order.Curren_Order!.amouttotal}',
+                          style: const TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
                         ),
+                        const Text(
+                          ' ເເກັດ',
+                          style: TextStyle(fontSize: 17),
+                        )
                       ],
                     ),
                     Row(
                       children: [
                         const Text(
-                          ' ລາຄາລວມ :',
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
+                          'ລາຄາລວມ :',
+                          style: TextStyle(fontSize: 17),
                         ),
                         Text(
-                          ' ${NumberFormat.decimalPattern().format(order.Curren_Order!.sumtotal)} ກີບ',
-                          style: const TextStyle(fontSize: 17),
+                          ' ${NumberFormat.decimalPattern().format(order.Curren_Order!.sumtotal)} ',
+                          style: const TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.bold),
+                        ),
+                        const Text(
+                          'ກີບ',
+                          style: TextStyle(fontSize: 17),
                         ),
                       ],
                     )
@@ -255,7 +267,10 @@ class _View_orderState extends State<view_order> {
                       primary: element.main,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                  child: const Text('ບັນທຶກເປັນພີດີເອຟ',style: TextStyle(fontSize: 17),),
+                  child: const Text(
+                    'ບັນທຶກເປັນພີດີເອຟ',
+                    style: TextStyle(fontSize: 17),
+                  ),
                   onPressed: () async {
                     Bill_Order.save_Bill(order, context);
                   },
