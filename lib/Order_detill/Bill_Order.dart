@@ -37,9 +37,9 @@ class Bill_Order {
                 Subheader_Purchase_OrderDetial(ttf, order),
                 pw.SizedBox(height: 40),
                 pw.Text(
-                  'ລາຍລະອຽດຂອງການສັ່ງຊື້',
+                  'ລາຍລະອຽດໃບບີນ ຮ້ານເເອັດມານີ',
                   style: pw.TextStyle(
-                      fontSize: 20, fontWeight: pw.FontWeight.bold, font: ttf),
+                      fontSize: 17, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
                 pw.Divider(),
                 Subtitle_Purchase_Order_Detail(ttf),

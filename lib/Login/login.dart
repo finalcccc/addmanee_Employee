@@ -125,37 +125,18 @@ class _Login extends State<Login> {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
                                 try {
-                                  FirebaseAuth.instance
-                                      .signInWithEmailAndPassword(
-                                    ////////////////////////////////////////////////
+                                  FirebaseAuth.instance.signInWithEmailAndPassword(
                                     email: employeeData.email!,
                                     password: employeeData.password!,
-                                  )
-                                      .then((value) {
-                                    GetEmployeeData_only(
-                                        em, employeeData.email!);
-                                    if (em.CurrentEmployee_loco!.position ==
-                                        'Sale') {
-                                      formKey.currentState!.reset();
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => const Menu(),
-                                        ),
-                                      );
-                                    } else {
-                                      Fluttertoast.showToast(
-                                        msg: "ທ່ານບໍ່ສິດເຂົ້າເຖີງ",
-                                        fontSize: 20,
-                                        gravity: ToastGravity.CENTER,
-                                        backgroundColor: Colors.red,
-                                        textColor: Colors.white,
-                                      );
-                                    }
+                                  ).then((value) {
+                                   GetEmployeeData_only(em, employeeData.email!, context);
                                   });
                                 } on FirebaseAuthException catch (e) {
-                                  // print(e.message);
-                                  // print(e.code);
+                                  if (e.code != true) {
+                                    print('No user found for that email.');
+                                  } else if (e.code == 'wrong-password') {
+                                    print('Wrong password provided for that user.');
+                                  }
                                   Fluttertoast.showToast(
                                     msg: e.message!,
                                     gravity: ToastGravity.CENTER,
