@@ -9,7 +9,7 @@ import 'package:untitled4/celement/elements.dart';
 import 'package:untitled4/notifire/productNotifire.dart';
 import 'package:untitled4/route/router.dart';
 
-import '../api/Get_product.dart';
+import '../api/GetProduct.dart';
 import '../api/widget/widgetShearch.dart';
 import '../notifire/Cartnotififire.dart';
 import '../notifire/categoryNotifire.dart';
@@ -116,7 +116,7 @@ class _Get_OrderState extends State<Get_Order> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              GetProduct_type(product, category.categoryList[index].id, index);
+              GetProduct_type(product, category.categoryList[index].id,index);
               colortype = false;
             },
             child: Container(

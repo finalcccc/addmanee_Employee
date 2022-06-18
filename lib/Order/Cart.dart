@@ -7,7 +7,7 @@ import 'package:untitled4/api/Upload_DAta/Upload_Order.dart';
 import 'package:untitled4/celement/elements.dart';
 import 'package:untitled4/notifire/employeeNotifire.dart';
 
-import '../api/Get_product.dart';
+import '../api/GetProduct.dart';
 import '../notifire/Cartnotififire.dart';
 import '../notifire/categoryNotifire.dart';
 import '../notifire/productNotifire.dart';

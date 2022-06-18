@@ -1,4 +1,6 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls, avoid_print, non_constant_identifier_names, no_leading_underscores_for_local_identifiers
+// ignore_for_file: non_constant_identifier_names, avoid_function_literals_in_foreach_calls, no_leading_underscores_for_local_identifiers, avoid_print
+
+import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -11,11 +13,10 @@ GetProduct(ProductNotifire product) async {
   List<product_Model> _Product = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection('products')
-      .orderBy('amount',descending:
-  true)
+      .orderBy('amount')
       .get();
   rfn.docs.forEach(
-        (e) {
+    (e) {
       print(e.data());
       product_Model f = product_Model.formMap(e.data());
       _Product.add(f);
@@ -24,16 +25,15 @@ GetProduct(ProductNotifire product) async {
   product.Product = _Product;
   product.RefreshProduct();
 }
-
 
 GetProduct_type(ProductNotifire product, var catename, index) async {
   List<product_Model> _Product = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection('products')
-      .where('category_id', isEqualTo: catename).orderBy('amount',descending: true)
+      .where('category_id', isEqualTo: catename)
       .get();
   rfn.docs.forEach(
-        (e) {
+    (e) {
       print(e.data());
       product_Model f = product_Model.formMap(e.data());
       _Product.add(f);
@@ -42,13 +42,15 @@ GetProduct_type(ProductNotifire product, var catename, index) async {
   product.Product = _Product;
   product.RefreshProduct();
 }
-
 GetCategoryData(CategoryNotifire cate) async {
   List<CategoryData> category = [];
-  QuerySnapshot<Map<String, dynamic>> rfn =
-  await FirebaseFirestore.instance.collection('categorys').orderBy('category').get();
+  QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
+      .collection('categorys')
+      .orderBy('category')
+      .get();
   cate.cate.clear();
   rfn.docs.forEach((e) {
+    print(e.data());
     CategoryData f = CategoryData.frommap(e.data());
     cate.cate.add(e['id']);
     category.add(f);

@@ -159,7 +159,7 @@ class _View_orderState extends State<view_order> {
           ),
           const SizedBox(height: 20),
           Expanded(
-            child: ListView.builder(
+            child: order.Order_detill != null? ListView.builder(
                 itemBuilder: (context, index) {
                   return Card(
                     child: Column(
@@ -216,7 +216,7 @@ class _View_orderState extends State<view_order> {
                     ),
                   );
                 },
-                itemCount: order.Order_detill.length),
+                itemCount: order.Order_detill.length):Container()
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 20),
