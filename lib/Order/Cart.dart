@@ -334,6 +334,8 @@ class _CartState extends State<Cart> {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
                                 ),
+                                style: ElevatedButton.styleFrom(
+                                    primary: element.main),
                                 onPressed: () async {
                                   if (_key_import.currentState!.validate()) {
                                     _key_import.currentState!.save();

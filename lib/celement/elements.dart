@@ -13,7 +13,7 @@ class element {
 
   static String nullimage = 'https://rae.mju.ac.th/images/untitled.png';
   //color
-  static var main = const Color(0xff0031CA);
+  static var main = const Color(0xff179F84);
   static var Indigo = const Color(0xff281E5D);
   static var ocean = const Color(0xff016064);
   static var sky = const Color(0xff63c5da);
@@ -21,7 +21,7 @@ class element {
   static var gray = const Color(0xffF7F7F7);
 
   //title
-  static String title = "ຮ້ານເເອັດມານີ";
+  static String title = 'ຮ້ານແອັດມານີສຳລັບພະນັກງານຂາຍ';
   static String p1 = "ຮັບອໍເດີ";
   static String p2 = "ຈັດການອໍເດີ";
   static String p3 = "ອໍເດີທີສຳເລັດ";
@@ -43,7 +43,42 @@ class element {
       ],
     );
   }
-
+  WidgetSearch({String? label}) {
+    return PreferredSize(
+      preferredSize: const Size.fromHeight(40),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        child: Row(
+          children: [
+            Expanded(
+              child: CupertinoTextField(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 10,
+                ),
+                placeholder: label,
+                prefix: const Padding(
+                  padding: EdgeInsets.only(left: 14),
+                  child: Icon(
+                    Icons.search,
+                    color: Color(0xff7b7b7b),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  color: const Color(0xfff7f7f7),
+                  borderRadius: BorderRadius.circular(40),
+                ),
+                style: const TextStyle(
+                  color: Color(0xff707070),
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
   // option
   static MenuButton(
       BuildContext context, String rout, var icons, Color colors, txt) {

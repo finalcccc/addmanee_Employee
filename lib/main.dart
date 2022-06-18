@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:untitled4/Order/Cart.dart';
 import 'package:untitled4/Order/Get_order.dart';
 import 'package:untitled4/Order/managerOrderByCustomer.dart';
+import 'package:untitled4/Order/reportIncome.dart';
 import 'package:untitled4/notifire/OrderNotifire.dart';
 import 'package:untitled4/notifire/employeeNotifire.dart';
 import 'package:untitled4/profile/Profire.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         route.Cart: (BuildContext context) => const Cart(),
         route.Profile: (BuildContext context) => const Profile(),
         route.managerOrder: (BuildContext context) => const ManagerOrderByCustomer(),
+        route.Report_Order_Month: (BuildContext context) => const Report_Order_Month(),
       },
     );
   }
