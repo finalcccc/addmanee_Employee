@@ -74,7 +74,7 @@ class _ManagerOrderByCustomerState extends State<ManagerOrderByCustomer> {
                               ),
                             ),
                             Text(
-                              'ຊື່ລູກຄ້າ: ${order.Order[index].nameCutommer} ແກັດ',
+                              'ຊື່ລູກຄ້າ: ${order.Order[index].nameCutommer}',
                               style: const TextStyle(fontSize: 16),
                             ),
                             Text(
