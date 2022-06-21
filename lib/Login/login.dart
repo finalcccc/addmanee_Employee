@@ -54,7 +54,7 @@ class _Login extends State<Login> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "ຮ້ານເເອັດມານີ",
+                          "ຮ້ານເເອັດມະນີ",
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -125,17 +125,21 @@ class _Login extends State<Login> {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
                                 try {
-                                  FirebaseAuth.instance.signInWithEmailAndPassword(
+                                  FirebaseAuth.instance
+                                      .signInWithEmailAndPassword(
                                     email: employeeData.email!,
                                     password: employeeData.password!,
-                                  ).then((value) {
-                                   GetEmployeeData_only(em, employeeData.email!, context);
+                                  )
+                                      .then((value) {
+                                    GetEmployeeData_only(
+                                        em, employeeData.email!, context);
                                   });
                                 } on FirebaseAuthException catch (e) {
                                   if (e.code != true) {
                                     print('No user found for that email.');
                                   } else if (e.code == 'wrong-password') {
-                                    print('Wrong password provided for that user.');
+                                    print(
+                                        'Wrong password provided for that user.');
                                   }
                                   Fluttertoast.showToast(
                                     msg: e.message!,

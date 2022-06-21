@@ -21,7 +21,7 @@ class element {
   static var gray = const Color(0xffF7F7F7);
 
   //title
-  static String title = 'ຮ້ານແອັດມານີສຳລັບພະນັກງານຂາຍ';
+  static String title = 'ຮ້ານແອັດມະນີສຳລັບພະນັກງານຂາຍ';
   static String p1 = "ຮັບອໍເດີ";
   static String p2 = "ຈັດການອໍເດີ";
   static String p3 = "ອໍເດີທີສຳເລັດ";
@@ -43,6 +43,7 @@ class element {
       ],
     );
   }
+
   WidgetSearch({String? label}) {
     return PreferredSize(
       preferredSize: const Size.fromHeight(40),
@@ -79,6 +80,7 @@ class element {
       ),
     );
   }
+
   // option
   static MenuButton(
       BuildContext context, String rout, var icons, Color colors, txt) {
