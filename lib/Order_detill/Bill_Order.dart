@@ -24,7 +24,7 @@ class Bill_Order {
             child: pw.Column(
               children: [
                 pw.Text(
-                  'ຮ້ານແອັດມານີ',
+                  'ຮ້ານແອັດມະນີ',
                   style: pw.TextStyle(
                       fontSize: 25, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
@@ -37,7 +37,7 @@ class Bill_Order {
                 Subheader_Purchase_OrderDetial(ttf, order),
                 pw.SizedBox(height: 40),
                 pw.Text(
-                  'ລາຍລະອຽດໃບບີນ ຮ້ານເເອັດມານີ',
+                  'ລາຍລະອຽດໃບບີນ ຮ້ານເເອັດມະນີ',
                   style: pw.TextStyle(
                       fontSize: 17, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
