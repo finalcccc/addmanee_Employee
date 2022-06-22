@@ -28,7 +28,7 @@ class _Report_Order_DayState extends State<Report_Order_Day> {
         centerTitle: true,
         backgroundColor: element.main,
         leading: element().RoutePageBack(context, const Menu()),
-        bottom: WidgetSearch(label: 'ປີ - ເດືອນ-ວັນ'),
+       // bottom: WidgetSearch(label: 'ປີ - ເດືອນ-ວັນ'),
       ),
       body: Column(
         children: [

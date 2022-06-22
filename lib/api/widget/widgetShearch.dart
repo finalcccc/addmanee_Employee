@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled4/api/searchData/search_product.dart';
+import 'package:untitled4/notifire/productNotifire.dart';
 
 // ignore: non_constant_identifier_names
-WidgetSearch({String? label}) {
+WidgetSearch({String? label,required ProductNotifire pro}) {
+  var txt =TextEditingController();
   return PreferredSize(
     preferredSize: const Size.fromHeight(40),
     child: Padding(
@@ -12,6 +14,7 @@ WidgetSearch({String? label}) {
         children: [
           Expanded(
             child: CupertinoTextField(
+               controller: txt,
               padding: const EdgeInsets.symmetric(
                 vertical: 12,
                 horizontal: 10,
@@ -25,7 +28,10 @@ WidgetSearch({String? label}) {
                     color: Color(0xff7b7b7b),
                   ),
                   onPressed: () {
-                    SearchProduct();
+                    pro.shech = txt.text;
+                    SearchProduct(pro).then((value){
+                      txt.clear();
+                    });
                   },
                 ),
               ),
