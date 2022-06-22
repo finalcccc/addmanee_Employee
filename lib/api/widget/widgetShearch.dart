@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled4/api/searchData/search_product.dart';
 
 // ignore: non_constant_identifier_names
 WidgetSearch({String? label}) {
@@ -16,11 +17,16 @@ WidgetSearch({String? label}) {
                 horizontal: 10,
               ),
               placeholder: label,
-              prefix: const Padding(
-                padding: EdgeInsets.only(left: 14),
-                child: Icon(
-                  Icons.search,
-                  color: Color(0xff7b7b7b),
+              prefix: Padding(
+                padding: const EdgeInsets.only(left: 14),
+                child: IconButton(
+                  icon: const Icon(
+                    Icons.search,
+                    color: Color(0xff7b7b7b),
+                  ),
+                  onPressed: () {
+                    SearchProduct();
+                  },
                 ),
               ),
               decoration: BoxDecoration(
