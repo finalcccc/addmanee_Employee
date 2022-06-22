@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled4/Order/Cart.dart';
 import 'package:untitled4/Order/Get_order.dart';
+import 'package:untitled4/Order/Report_Order_Month.dart';
 import 'package:untitled4/Order/managerOrderByCustomer.dart';
-import 'package:untitled4/Order/reportIncome.dart';
 import 'package:untitled4/notifire/OrderNotifire.dart';
 import 'package:untitled4/notifire/employeeNotifire.dart';
 import 'package:untitled4/profile/Profire.dart';
@@ -14,6 +14,7 @@ import 'package:untitled4/route/router.dart';
 import 'package:untitled4/splashScreen%20.dart';
 
 import 'notifire/Cartnotififire.dart';
+import 'notifire/Repport_Order_Notifire.dart';
 import 'notifire/categoryNotifire.dart';
 import 'notifire/productNotifire.dart';
 
@@ -31,6 +32,7 @@ void main() async {
       ChangeNotifierProvider(create: (_) => Cartnotifire()),
       ChangeNotifierProvider(create: (_) => EmployeeNotifire()),
       ChangeNotifierProvider(create: (_) => Order_Notifire()),
+      ChangeNotifierProvider(create: (_) =>  report_incomeNotifire()),
     ],
     child: const MyApp(),
   ));

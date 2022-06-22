@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled4/menu.dart';
+import 'package:untitled4/notifire/Repport_Order_Notifire.dart';
 import '../api/widget/widgetShearch.dart';
 import '../celement/elements.dart';
 import 'package:intl/intl.dart';
@@ -20,7 +21,7 @@ final List items = List.generate(3, (i) => "Item $i");
 class _Report_Order_DayState extends State<Report_Order_Day> {
   @override
   Widget build(BuildContext context) {
-
+ report_incomeNotifire order = Provider.of<report_incomeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍການສັ່ງຊື້ທີ່ສຳເລັດໃນເເຕ່ລະມື້'),
@@ -35,14 +36,14 @@ class _Report_Order_DayState extends State<Report_Order_Day> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                  '   ປະຈຳປີ : 2022-1',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold)),
+                  '   ປະຈຳປີ : ${order.curren_Orderreport!.date!.toDate().toString().substring(0,7)}',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold)),
             ],
           ),
           SizedBox(height: 10,),
           Expanded(
             child: ListView.separated(
               physics: BouncingScrollPhysics(),
-              itemCount: 2,
+              itemCount: order.Order_Day.length,
               itemBuilder: (context, index) {
                 return Container(
                     margin: EdgeInsets.only(right: 10, left: 10),
@@ -55,7 +56,7 @@ class _Report_Order_DayState extends State<Report_Order_Day> {
                               children: [
                                 ListTile(
                                   title: Text(
-                                      'ປີ : 2022-1-${index+4}'),
+                                      'ປີ : ${order.Order_Day[index].date!.toDate().toString().substring(0,10)}'),
                                   subtitle: Column(
                                     crossAxisAlignment:
                                     CrossAxisAlignment.start,
@@ -69,7 +70,7 @@ class _Report_Order_DayState extends State<Report_Order_Day> {
                                                 fontSize: 16),
                                           ),
                                           Text(
-                                            ' 100',
+                                            ' ${order.Order_Day[index].amountAll}',
                                             style: TextStyle(
                                                 fontSize: 16,
                                                 color: element.main,
@@ -95,7 +96,7 @@ class _Report_Order_DayState extends State<Report_Order_Day> {
                                                     fontSize: 16),
                                               ),
                                               Text(
-                                                ' 1.000.000',
+                                                '${NumberFormat.decimalPattern().format(order.Order_Day[index].sumtatall)}',
                                                 style: TextStyle(
                                                     fontSize: 16,
                                                     color: Colors.green,

@@ -2,11 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:untitled4/Order/reportIncomeMonth.dart';
+import 'package:untitled4/Order/repor_Order_Day.dart';
+import 'package:untitled4/api/get_Report_Order.dart';
 import 'package:untitled4/menu.dart';
+import 'package:untitled4/notifire/employeeNotifire.dart';
 import '../api/widget/widgetShearch.dart';
 import '../celement/elements.dart';
 import 'package:intl/intl.dart';
+
+import '../notifire/Repport_Order_Notifire.dart';
 
 
 class Report_Order_Month extends StatefulWidget {
@@ -16,12 +20,19 @@ class Report_Order_Month extends StatefulWidget {
   State<Report_Order_Month> createState() => _Report_Order_MonthState();
 }
 
-final List items = List.generate(3, (i) => "Item $i");
+
 
 class _Report_Order_MonthState extends State<Report_Order_Month> {
   @override
+  initState(){
+    super.initState();
+    report_incomeNotifire order = Provider.of<report_incomeNotifire>(context,listen: false);
+    EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context,listen: false);
+    Get_reportl_Order_Month(order, emp);
+  }
+  @override
   Widget build(BuildContext context) {
-
+    report_incomeNotifire order = Provider.of<report_incomeNotifire>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ລາຍງານຈຳນວນສັ່ງຊື້ທີສຳເລັດ'),
@@ -32,7 +43,7 @@ class _Report_Order_MonthState extends State<Report_Order_Month> {
       ),
       body: ListView.separated(
         physics: BouncingScrollPhysics(),
-        itemCount: 3,
+        itemCount: order.Order_Month.length,
         itemBuilder: (context, index) {
           return Container(
               margin: EdgeInsets.only(right: 10, left: 10),
@@ -45,7 +56,7 @@ class _Report_Order_MonthState extends State<Report_Order_Month> {
                         children: [
                           ListTile(
                             title: Text(
-                                'ປີ/ເດືອນ: 2022-${index+1}'),
+                                'ປີ/ເດືອນ: ${order.Order_Month[index].date!.toDate().toString().substring(0,7)}'),
                             subtitle: Column(
                               crossAxisAlignment:
                               CrossAxisAlignment.start,
@@ -59,7 +70,7 @@ class _Report_Order_MonthState extends State<Report_Order_Month> {
                                           fontSize: 16),
                                     ),
                                     Text(
-                                      ' 200',
+                                      ' ${order.Order_Month[index].amountAll}',
                                       style: TextStyle(
                                           fontSize: 16,
                                           color: element.main,
@@ -85,7 +96,7 @@ class _Report_Order_MonthState extends State<Report_Order_Month> {
                                               fontSize: 16),
                                         ),
                                         Text(
-                                          ' 2.000.000',
+                                          ' ${NumberFormat.decimalPattern().format(order.Order_Month[index].sumtatall)}',
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: Colors.green,
@@ -113,7 +124,9 @@ class _Report_Order_MonthState extends State<Report_Order_Month> {
                   ],
                 ),
                 onTap: () {
-
+                 order.curren_Orderreport  = order.Order_Month[index];
+                 EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context,listen: false);
+                 Get_reportl_Day(order, emp);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
