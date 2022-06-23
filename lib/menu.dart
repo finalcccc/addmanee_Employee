@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:untitled4/celement/elements.dart';
+import 'package:untitled4/notifire/employeeNotifire.dart';
 import 'package:untitled4/route/router.dart';
 
 class Menu extends StatefulWidget {
@@ -12,6 +14,7 @@ class Menu extends StatefulWidget {
 class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
+    EmployeeNotifire emp = Provider.of<EmployeeNotifire>(context);
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
@@ -24,9 +27,9 @@ class _MenuState extends State<Menu> {
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        //actions: [element.CartButton(context, route.Cart)],
+        actions: [element.CartButton(context, route.Cart)],
       ),
-      drawer: buildDrawer(),
+      drawer: buildDrawer(emp),
       body: Container(
         color: Colors.grey[300],
         child: GridView(
@@ -47,19 +50,24 @@ class _MenuState extends State<Menu> {
     );
   }
 
-  Widget buildDrawer() {
+  Widget buildDrawer(EmployeeNotifire emp) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
+        DrawerHeader(
             decoration: BoxDecoration(
-              color: Color(0xff0031CA),
+              color:  Color(0xff179F84),
             ),
-            //Title of header
-            child: Text(
-              'ທະວິສັກ',
-              style: TextStyle(fontSize: 26, color: Colors.white),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text('ຮ້ານເເອັດມະນີ',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 40,color: Colors.white)),
+                SizedBox(height: 10,),
+                Text('${emp.CurrentEmployee_loco!.id}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 14,color: Colors.white)),
+                Text('${emp.CurrentEmployee_loco!.name}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,color: Colors.white)),
+                Text('${emp.CurrentEmployee_loco!.email}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17,color: Colors.white)),
+              ],
             ),
           ),
           buildListTile(element.p1, route.Get_oerder),
