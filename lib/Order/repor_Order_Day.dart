@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled4/Order/Report_Order_Month.dart';
 import 'package:untitled4/menu.dart';
 import 'package:untitled4/notifire/Repport_Order_Notifire.dart';
 import '../api/widget/widgetShearch.dart';
@@ -27,7 +28,7 @@ class _Report_Order_DayState extends State<Report_Order_Day> {
         title: const Text('ລາຍການສັ່ງຊື້ທີ່ສຳເລັດໃນເເຕ່ລະມື້'),
         centerTitle: true,
         backgroundColor: element.main,
-        leading: element().RoutePageBack(context, const Menu()),
+        leading: element().RoutePageBack(context, const Report_Order_Month()),
        // bottom: WidgetSearch(label: 'ປີ - ເດືອນ-ວັນ'),
       ),
       body: Column(

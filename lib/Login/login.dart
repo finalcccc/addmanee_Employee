@@ -125,14 +125,11 @@ class _Login extends State<Login> {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
                                 try {
-                                  FirebaseAuth.instance
-                                      .signInWithEmailAndPassword(
+                                  FirebaseAuth.instance.signInWithEmailAndPassword(
                                     email: employeeData.email!,
                                     password: employeeData.password!,
-                                  )
-                                      .then((value) {
-                                    GetEmployeeData_only(
-                                        em, employeeData.email!, context);
+                                  ).then((value) {
+                                    GetEmployeeData_only(em, employeeData.email!, context);
                                   });
                                 } on FirebaseAuthException catch (e) {
                                   if (e.code != true) {
