@@ -64,7 +64,7 @@ class _Get_OrderState extends State<Get_Order> {
           ),
         ),
         actions: [element.CartButton(context,route.Cart)],
-        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນສິນຄ້າ",pro: product),
+        bottom: WidgetSearch(label: "ຄົ້ນຫາຂໍ້ມູນສິນຄ້າ",pro: product,context: context),
       ),
       body: SingleChildScrollView(
         child: Column(

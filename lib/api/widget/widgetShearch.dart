@@ -4,7 +4,7 @@ import 'package:untitled4/api/searchData/search_product.dart';
 import 'package:untitled4/notifire/productNotifire.dart';
 
 // ignore: non_constant_identifier_names
-WidgetSearch({String? label,required ProductNotifire pro}) {
+WidgetSearch({String? label,required var pro,required BuildContext context}) {
   var txt =TextEditingController();
   return PreferredSize(
     preferredSize: const Size.fromHeight(40),
@@ -18,6 +18,7 @@ WidgetSearch({String? label,required ProductNotifire pro}) {
               padding: const EdgeInsets.symmetric(
                 vertical: 12,
                 horizontal: 10,
+
               ),
               placeholder: label,
               prefix: Padding(

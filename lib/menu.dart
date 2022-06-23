@@ -22,6 +22,7 @@ class _MenuState extends State<Menu> {
         shadowColor: Colors.grey[300],
         iconTheme: const IconThemeData(color: Colors.white),
         title: Center(
+
           child: Text(
             element.title,
             style: const TextStyle(fontWeight: FontWeight.bold),
