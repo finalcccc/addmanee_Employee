@@ -53,6 +53,7 @@ class Cartnotifire with ChangeNotifier {
       int _pi = price[index] * Carts[index].amout;
       Carts[index].sum = _pi;
       sumltoal += price[index];
+      print(sumltoal);
     }
 
     notifyListeners();

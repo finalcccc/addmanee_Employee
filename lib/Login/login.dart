@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, avoid_print, unrelated_type_equality_checks
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
+import 'package:untitled4/Login/resetSreen.dart';
 import 'package:untitled4/celement/elements.dart';
 
 import '../api/getEmployeeData.dart';
-import '../menu.dart';
 import '../model/Employee_Model.dart';
 import '../notifire/employeeNotifire.dart';
 
@@ -125,11 +125,14 @@ class _Login extends State<Login> {
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
                                 try {
-                                  FirebaseAuth.instance.signInWithEmailAndPassword(
+                                  FirebaseAuth.instance
+                                      .signInWithEmailAndPassword(
                                     email: employeeData.email!,
                                     password: employeeData.password!,
-                                  ).then((value) {
-                                    GetEmployeeData_only(em, employeeData.email!, context);
+                                  )
+                                      .then((value) {
+                                    GetEmployeeData_only(
+                                        em, employeeData.email!, context);
                                   });
                                 } on FirebaseAuthException catch (e) {
                                   if (e.code != true) {
@@ -154,6 +157,19 @@ class _Login extends State<Login> {
                               ),
                             ),
                           ),
+                        ),
+                        const SizedBox(height: 15),
+                        GestureDetector(
+                          child: const Text(
+                            'ລືມລະຫັດຜ່ານ?',
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const ResetScreen())),
                         ),
                       ],
                     ),

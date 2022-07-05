@@ -29,7 +29,7 @@ class Bill_Order {
                       fontSize: 25, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
                 pw.Text(
-                  'ໃບບີນ',
+                  'ໃບບິນ',
                   style: pw.TextStyle(
                       fontSize: 20, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
@@ -37,7 +37,7 @@ class Bill_Order {
                 Subheader_Purchase_OrderDetial(ttf, order),
                 pw.SizedBox(height: 40),
                 pw.Text(
-                  'ລາຍລະອຽດໃບບີນ ຮ້ານເເອັດມະນີ',
+                  'ລາຍລະອຽດໃບບິນຮ້ານເເອັດມະນີ',
                   style: pw.TextStyle(
                       fontSize: 17, fontWeight: pw.FontWeight.bold, font: ttf),
                 ),
@@ -132,7 +132,7 @@ class Bill_Order {
             children: [
               pw.Row(children: [
                 pw.Text(
-                  'ລະຫັດໃບບີນ: ',
+                  'ລະຫັດໃບບິນ ',
                   style: pw.TextStyle(font: ttf),
                 ),
                 pw.Text('${order.Curren_Order!.id}'),

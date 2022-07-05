@@ -13,7 +13,7 @@ GetProduct(ProductNotifire product) async {
   List<product_Model> _Product = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection('products')
-      .orderBy('amount')
+      .orderBy('amount', descending: true)
       .get();
   rfn.docs.forEach(
     (e) {
@@ -42,6 +42,7 @@ GetProduct_type(ProductNotifire product, var catename, index) async {
   product.Product = _Product;
   product.RefreshProduct();
 }
+
 GetCategoryData(CategoryNotifire cate) async {
   List<CategoryData> category = [];
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
