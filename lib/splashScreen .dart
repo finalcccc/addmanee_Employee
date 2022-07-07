@@ -35,7 +35,7 @@ class SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const [
             Text(
-              'ຮ້ານເເອັດມານີ',
+              'ຮ້ານເເອັດມະນີ',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 44,

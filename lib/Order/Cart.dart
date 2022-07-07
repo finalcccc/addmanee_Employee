@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names, no_leading_underscores_for_local_identifiers, prefer_is_empty, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled4/api/Upload_DAta/Upload_Order.dart';
@@ -187,6 +188,7 @@ class _CartState extends State<Cart> {
                   padding: const EdgeInsets.symmetric(vertical: 14)),
               onPressed: () async {
                 await Upload_Order(cart, product, emp);
+
                 _key_import.currentState!.reset();
               },
               child: const Text(
@@ -280,7 +282,7 @@ class _CartState extends State<Cart> {
                               ),
                               keyboardType: TextInputType.number,
                               onSaved: (_tel) {
-                                cart.tel =cart.tel + _tel.toString();
+                                cart.tel = ' ${_tel.toString()}';
                               },
                               validator: (amout) {
                                 if (amout!.isEmpty) {
@@ -339,6 +341,13 @@ class _CartState extends State<Cart> {
                                 onPressed: () async {
                                   if (_key_import.currentState!.validate()) {
                                     _key_import.currentState!.save();
+                                    Fluttertoast.showToast(
+                                      msg: "ເພີ່ມທີ່ຢູ່ສຳເລັດ",
+                                      fontSize: 20,
+                                      gravity: ToastGravity.CENTER,
+                                      backgroundColor: Colors.green,
+                                      textColor: Colors.white,
+                                    );
                                   }
                                 },
                               ),
