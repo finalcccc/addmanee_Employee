@@ -56,7 +56,7 @@ class Bill_Order {
                               font: ttf,
                               fontWeight: pw.FontWeight.bold,
                               fontSize: 15)),
-                      pw.Text('${order.Curren_Order!.amouttotal}',
+                      pw.Text('${order.Curren_Order.amouttotal}',
                           style: const pw.TextStyle(
                             fontSize: 15,
                           )),
@@ -71,7 +71,7 @@ class Bill_Order {
                               fontWeight: pw.FontWeight.bold,
                               fontSize: 15)),
                       pw.Text(
-                          '${NumberFormat.decimalPattern().format(order.Curren_Order!.sumtotal).toString()}',
+                          '${NumberFormat.decimalPattern().format(order.Curren_Order.sumtotal).toString()}',
                           style: const pw.TextStyle(
                             fontSize: 15,
                           )),
@@ -110,11 +110,11 @@ class Bill_Order {
     );
 
     int randomNumber = Random().nextInt(90) + 10;
-    String date = await order.Curren_Order!.date!.toDate().toString();
+    String date = await order.Curren_Order.date!.toDate().toString();
     String result = date.substring(2, 11);
     print(result);
     final File file = await File(
-        '/storage/emulated/0/Download/$randomNumber${order.Curren_Order!.nameCutommer}$result.pdf');
+        '/storage/emulated/0/Download/$randomNumber${order.Curren_Order.nameCutommer}$result.pdf');
     print(file);
     await file.writeAsBytes(await pdf.save()).then((value) {
       OpenFile.open('${file.path}');
@@ -135,11 +135,11 @@ class Bill_Order {
                   'ລະຫັດໃບບິນ ',
                   style: pw.TextStyle(font: ttf),
                 ),
-                pw.Text('${order.Curren_Order!.id}'),
+                pw.Text('${order.Curren_Order.id}'),
               ]),
               pw.Row(children: [
                 pw.Text('ຊື່ຜູ້ຮັບ: ', style: pw.TextStyle(font: ttf)),
-                pw.Text('${order.Curren_Order!.nameCutommer}',
+                pw.Text('${order.Curren_Order.nameCutommer}',
                     style: pw.TextStyle(font: ttf)),
               ]),
               pw.Row(
@@ -148,7 +148,7 @@ class Bill_Order {
                     'ເບີໂທ: ',
                     style: pw.TextStyle(font: ttf),
                   ),
-                  pw.Text('${order.Curren_Order!.tel}'),
+                  pw.Text('${order.Curren_Order.tel}'),
                 ],
               ),
               pw.Row(
@@ -157,7 +157,7 @@ class Bill_Order {
                     'ທີ່ຢູ່: ',
                     style: pw.TextStyle(font: ttf),
                   ),
-                  pw.Text('${order.Curren_Order!.address}',
+                  pw.Text('${order.Curren_Order.address}',
                       style: pw.TextStyle(font: ttf)),
                 ],
               ),
@@ -167,7 +167,7 @@ class Bill_Order {
                     'ລະຫັດພະນັດງານ: ',
                     style: pw.TextStyle(font: ttf),
                   ),
-                  pw.Text('${order.emp_Ooder!.id}'),
+                  pw.Text('${order.emp_Ooder.id}'),
                 ],
               ),
               pw.Row(
@@ -176,7 +176,7 @@ class Bill_Order {
                     'ຊື່ພະນັກງານ: ',
                     style: pw.TextStyle(font: ttf),
                   ),
-                  pw.Text('${order.emp_Ooder!.name}',
+                  pw.Text('${order.emp_Ooder.name}',
                       style: pw.TextStyle(font: ttf)),
                 ],
               ),
@@ -186,7 +186,7 @@ class Bill_Order {
                     'ເບີໂທ: ',
                     style: pw.TextStyle(font: ttf),
                   ),
-                  pw.Text('${order.emp_Ooder!.tel}',
+                  pw.Text('${order.emp_Ooder.tel}',
                       style: pw.TextStyle(font: ttf)),
                 ],
               ),
@@ -196,14 +196,14 @@ class Bill_Order {
                     'ອີເມວ: ',
                     style: pw.TextStyle(font: ttf),
                   ),
-                  pw.Text('${order.emp_Ooder!.email}'),
+                  pw.Text('${order.emp_Ooder.email}'),
                 ],
               )
             ],
           ),
         ),
         pw.Text(
-          'ວັນທີ ເດືອນ ປີ: ${order.Curren_Order!.date!.toDate()}',
+          'ວັນທີ ເດືອນ ປີ: ${order.Curren_Order.date!.toDate()}',
           style: pw.TextStyle(font: ttf),
         ),
       ],

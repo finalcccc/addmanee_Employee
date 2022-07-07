@@ -133,8 +133,7 @@ class _Login extends State<Login> {
                                       .signInWithEmailAndPassword(
                                     email: employeeData.email!,
                                     password: employeeData.password!,
-                                  )
-                                      .then((value) async{
+                                  ).then((value) async{
                                     await GetEmployeeData_only(
                                         em, employeeData.email!, context);
                                     Navigator.pop(context);

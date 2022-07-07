@@ -46,7 +46,7 @@ class _View_orderState extends State<view_order> {
                                         fontWeight: FontWeight.bold,
                                         fontSize: 16)),
                                 Text(
-                                  '${order.Curren_Order!.id}',
+                                  '${order.Curren_Order.id}',
                                   style: const TextStyle(fontSize: 16),
                                 ),
                                 // const Text(
@@ -56,7 +56,7 @@ class _View_orderState extends State<view_order> {
                                 //       fontWeight: FontWeight.bold),
                                 // ),
                                 Text(
-                                    '      ${order.Curren_Order!.date!.toDate().toString().substring(0, 10)}',
+                                    '      ${order.Curren_Order.date!.toDate().toString().substring(0, 10)}',
                                     style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold)),
@@ -70,7 +70,7 @@ class _View_orderState extends State<view_order> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 16)),
                             Text(
-                              ' ${order.Curren_Order!.nameCutommer}',
+                              ' ${order.Curren_Order.nameCutommer}',
                               style: const TextStyle(fontSize: 16),
                             ),
                           ],
@@ -82,7 +82,7 @@ class _View_orderState extends State<view_order> {
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            Text('${order.Curren_Order!.tel}',
+                            Text('${order.Curren_Order.tel}',
                                 style: const TextStyle(fontSize: 16)),
                           ],
                         ),
@@ -93,7 +93,7 @@ class _View_orderState extends State<view_order> {
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            Text(' ${order.Curren_Order!.address}',
+                            Text(' ${order.Curren_Order.address}',
                                 style: const TextStyle(fontSize: 16)),
                           ],
                         ),
@@ -104,7 +104,7 @@ class _View_orderState extends State<view_order> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
-                            Text(' ${order.emp_Ooder!.name}',
+                            Text(' ${order.emp_Ooder.name}',
                                 style: const TextStyle(fontSize: 16)),
                           ],
                         ),
@@ -233,7 +233,7 @@ class _View_orderState extends State<view_order> {
                           style: TextStyle(fontSize: 17),
                         ),
                         Text(
-                          ' ${order.Curren_Order!.amouttotal}',
+                          ' ${order.Curren_Order.amouttotal}',
                           style: const TextStyle(
                               fontSize: 17, fontWeight: FontWeight.bold),
                         ),
@@ -250,7 +250,7 @@ class _View_orderState extends State<view_order> {
                           style: TextStyle(fontSize: 17),
                         ),
                         Text(
-                          ' ${NumberFormat.decimalPattern().format(order.Curren_Order!.sumtotal)} ',
+                          ' ${NumberFormat.decimalPattern().format(order.Curren_Order.sumtotal)} ',
                           style: const TextStyle(
                               fontSize: 17, fontWeight: FontWeight.bold),
                         ),
