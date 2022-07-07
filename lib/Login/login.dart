@@ -7,9 +7,11 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:provider/provider.dart';
 import 'package:untitled4/Login/resetSreen.dart';
+import 'package:untitled4/Order/Get_order.dart';
 import 'package:untitled4/celement/elements.dart';
 
 import '../api/getEmployeeData.dart';
+import '../daiglog.dart';
 import '../model/Employee_Model.dart';
 import '../notifire/employeeNotifire.dart';
 
@@ -122,6 +124,8 @@ class _Login extends State<Login> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10))),
                             onPressed: () {
+                            Dialog_Cire(context);
+
                               if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
                                 try {
@@ -130,11 +134,13 @@ class _Login extends State<Login> {
                                     email: employeeData.email!,
                                     password: employeeData.password!,
                                   )
-                                      .then((value) {
-                                    GetEmployeeData_only(
+                                      .then((value) async{
+                                    await GetEmployeeData_only(
                                         em, employeeData.email!, context);
+                                    Navigator.pop(context);
                                   });
-                                } on FirebaseAuthException catch (e) {
+                                }
+                                on FirebaseAuthException catch (e) {
                                   if (e.code != true) {
                                     print('No user found for that email.');
                                   } else if (e.code == 'wrong-password') {
@@ -145,6 +151,7 @@ class _Login extends State<Login> {
                                     msg: e.message!,
                                     gravity: ToastGravity.CENTER,
                                   );
+                                  Navigator.pop(context);
                                 }
                               }
                             },
