@@ -39,7 +39,7 @@ class _Report_Order_DayState extends State<Report_Order_Day> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                    '   ປະຈຳປີ : ${order.curren_Orderreport!.date!.toDate().toString().substring(0,7)}',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold)),
+                    '   ປະຈໍາວັນ: ${order.curren_Orderreport!.date!.toDate().toString().substring(0,7)}',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold)),
               ),
             ],
           ),

@@ -49,8 +49,13 @@ class _Report_Order_MonthState extends State<Report_Order_Month> {
               margin: EdgeInsets.only(right: 10, left: 10),
               child: InkWell(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                          'ປະຈໍາປີ: ${order.curren_Orderreport!.date!.toDate().toString().substring(0,4)}',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold)),
+                    ),
                     Card(
                       child: Column(
                         children: [

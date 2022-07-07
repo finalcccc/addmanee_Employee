@@ -9,6 +9,7 @@ import 'package:untitled4/celement/elements.dart';
 import 'package:untitled4/notifire/employeeNotifire.dart';
 
 import '../api/GetProduct.dart';
+import '../daiglog.dart';
 import '../notifire/Cartnotififire.dart';
 import '../notifire/categoryNotifire.dart';
 import '../notifire/productNotifire.dart';
@@ -187,8 +188,16 @@ class _CartState extends State<Cart> {
                       borderRadius: BorderRadius.circular(10)),
                   padding: const EdgeInsets.symmetric(vertical: 14)),
               onPressed: () async {
+                Dialog_Cire(context);
                 await Upload_Order(cart, product, emp);
-
+                 Navigator.pop(context);
+                Fluttertoast.showToast(
+                  msg: "ສັ່ງຊື້ສຳເລັດ",
+                  fontSize: 20,
+                  gravity: ToastGravity.CENTER,
+                  backgroundColor: Colors.green,
+                  textColor: Colors.white,
+                );
                 _key_import.currentState!.reset();
               },
               child: const Text(
