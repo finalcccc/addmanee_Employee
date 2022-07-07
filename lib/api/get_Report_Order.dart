@@ -242,7 +242,7 @@ Get_reportl_Day(report_incomeNotifire Order ,EmployeeNotifire emp) async {
   m1.clear();
   rfn.docs.forEach((element) async {
     Timestamp g = element['date'];
-    //print('${g.toDate()}');
+    print('${g.toDate()}');
     String m = g.toDate().toString().substring(8, 10);
 
     if (emp.CurrentEmployee_loco!.id == element['Employee_ID'] && element['Staustus'] == 'ສຳເລັດ') {
@@ -375,55 +375,55 @@ Report_Day({required String? m,required List<Timestamp>?Day,required List<num>?s
       sumtotal![9] += element['sumtotal'];
       amountotal![9]+=(element['amouttotal']-element['amouttotal'])+1;
       break;
-    case '9':
+    case '09':
       Day![8] = g!;
       sumtotal![8] += element['sumtotal'];
       amountotal![8]+=(element['amouttotal']-element['amouttotal'])+1;
       break;
-    case '8':
+    case '08':
       Day![7] = g!;
       sumtotal![7] += element['sumtotal'];
       amountotal![7]+=(element['amouttotal']-element['amouttotal'])+1;
       break;
-    case '7':
+    case '07':
       Day![6] = g!;
       sumtotal![6] += element['sumtotal'];
       amountotal![6]+=(element['amouttotal']-element['amouttotal'])+1;
       break;
-    case '6':
+    case '06':
       {
         Day![5] = g!;
         sumtotal![5] += element['sumtotal'];
         amountotal![5]+=(element['amouttotal']-element['amouttotal'])+1;
       }
       break;
-    case '5':
+    case '05':
       Day![4] = g!;
       sumtotal![4] += element['sumtotal'];
       amountotal![4]+=(element['amouttotal']-element['amouttotal'])+1;
       break;
-    case '4':
+    case '04':
       {
         Day![3] = g!;
         sumtotal![3] += element['sumtotal'];
         amountotal![3]+=(element['amouttotal']-element['amouttotal'])+1;
       }
       break;
-    case '3':
+    case '03':
       {
         Day![2] = g!;
         sumtotal![2] += element['sumtotal'];
         amountotal![2]+=(element['amouttotal']-element['amouttotal'])+1;
       }
       break;
-    case '2':
+    case '02':
       {
         Day![1] = g!;
         sumtotal![1] += element['sumtotal'];
         amountotal![1]+=(element['amouttotal']-element['amouttotal'])+1;
       }
       break;
-    case '1':
+    case '01':
       {
         Day![0] = g!;
         sumtotal![0] += element['sumtotal'];
