@@ -287,8 +287,10 @@ class _CartState extends State<Cart> {
                               validator: (amout) {
                                 if (amout!.isEmpty) {
                                   return "ກະລຸນາປ້ອນຂໍ້ມູນ";
-                                } else if (amout.length < 1) {
-                                  return "ກວດສວບລາຄາ";
+                                } else if (amout.length < 12 ) {
+                                  return "ໃສ່ຫມາຍໂທລະສັບໃຫ້ຖຶກຕ້ອງ";
+                                }else if(amout.length < 8 ){
+                                  return "ໃສ່ໝາຍໂທລະສັບໃຫ້ຖຶກຕ້ອງ";
                                 }
                                 return null;
                               },
@@ -339,6 +341,8 @@ class _CartState extends State<Cart> {
                                 style: ElevatedButton.styleFrom(
                                     primary: element.main),
                                 onPressed: () async {
+                                  Navigator.pop(context);
+                                  _Dialog(cart);
                                   if (_key_import.currentState!.validate()) {
                                     _key_import.currentState!.save();
                                     Fluttertoast.showToast(
