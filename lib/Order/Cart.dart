@@ -280,7 +280,7 @@ class _CartState extends State<Cart> {
                               ),
                               keyboardType: TextInputType.number,
                               onSaved: (_tel) {
-                                cart.tel = _tel.toString();
+                                cart.tel =cart.tel + _tel.toString();
                               },
                               validator: (amout) {
                                 if (amout!.isEmpty) {
