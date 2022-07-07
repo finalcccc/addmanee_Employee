@@ -10,7 +10,7 @@ class Cartnotifire with ChangeNotifier {
   List<int> price = [];
   List<int> amoul = [];
   String? nameCutomer;
-  int tel = 020;
+  String tel = '020';
   String? address;
 
   product_Model? Procartcart;

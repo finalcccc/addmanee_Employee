@@ -29,7 +29,7 @@ class CartModel {
 class Order_Model_upload {
   String? id;
   String? nameCutommer;
-  int? tel;
+  String? tel;
   String? address;
   String? Employee_ID;
   int? amouttotal;

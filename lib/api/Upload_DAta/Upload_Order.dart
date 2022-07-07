@@ -38,7 +38,7 @@ Upload_Order(
     cart.sumltoal = 0;
     cart.nameCutomer = '';
     cart.address = '';
-    cart.tel = 020;
+    cart.tel = '020';
     cart.Refresh();
     GetProduct(product);
   });
