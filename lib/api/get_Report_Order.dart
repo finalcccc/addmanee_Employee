@@ -33,10 +33,10 @@ Get_reportl_Order_Month(report_incomeNotifire Order,EmployeeNotifire emp) async 
     //print(element.data().length);
 
     String m = g.toDate().toString().substring(6, 7);
+    print(m+' ເດືອນ');
     if (emp.CurrentEmployee_loco!.id == element['Employee_ID']&&element['Staustus'] == 'ສຳເລັດ') {
-      print(element.data().length);
       print(element.data());
-      Report_Month(m: m, Month: Month, sumtotal: sumtotal, g: g, element: element,amountotal: amountotal);
+    await  Report_Month(m: m, Month: Month, sumtotal: sumtotal, g: g, element: element,amountotal: amountotal);
     }
   });
   int i = 0;
@@ -46,6 +46,7 @@ Get_reportl_Order_Month(report_incomeNotifire Order,EmployeeNotifire emp) async 
       m1.add(m5);
       Order.Order_Month = m1;
       Order.Refresh();
+      print(Order.Order_Month.length.toString() +' ຈຳນວນ');
     }
     i++;
   }
@@ -228,12 +229,12 @@ Get_reportl_Day(report_incomeNotifire Order ,EmployeeNotifire emp) async {
     Timestamp(1, 1),
   ];
   List<String> year_M_D =
-      Order.curren_Orderreport!.date!.toDate().toString().split('-');
+      Order.curren_Orderreport.date!.toDate().toString().split('-');
   DateTime stars = DateTime(
     int.parse(year_M_D[0]),
     int.parse(year_M_D[1]),
   );
-  Timestamp? end = Order.curren_Orderreport!.date;
+  Timestamp? end = Order.curren_Orderreport.date;
   QuerySnapshot<Map<String, dynamic>> rfn = await FirebaseFirestore.instance
       .collection("order")
       .where('date', isGreaterThan: stars)
@@ -247,7 +248,7 @@ Get_reportl_Day(report_incomeNotifire Order ,EmployeeNotifire emp) async {
 
     if (emp.CurrentEmployee_loco!.id == element['Employee_ID'] && element['Staustus'] == 'ສຳເລັດ') {
       print('${m}');
-    Report_Day(m: m, Day: Day, sumtotal: sumtotal, g: g, element: element,amountotal: amountotal);
+    await Report_Day(m: m, Day: Day, sumtotal: sumtotal, g: g, element: element,amountotal: amountotal);
     }
   });
   int i = 0;
