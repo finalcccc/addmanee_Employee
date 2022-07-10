@@ -20,17 +20,24 @@ class _View_orderState extends State<view_order> {
   Widget build(BuildContext context) {
     Order_Notifire order = Provider.of<Order_Notifire>(context);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: element.main,
-        leading: element.BackPage(context),
-        title: const Text('ລາຍລະອຽດອໍເດີ້'),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          Padding(
-              padding: const EdgeInsets.all(10),
-              child: SingleChildScrollView(
+        appBar: AppBar(
+          backgroundColor: element.main,
+          leading: element.BackPage(context),
+          title: const Text('ລາຍລະອຽດອໍເດີ້'),
+          centerTitle: true,
+        ),
+        body: order.Curren_Order != null
+            ? Container(
+          margin: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'ວັນທີ: ${order.Curren_Order.date!.toDate().toString().substring(0, 10)}',
+                style: const TextStyle(
+                    fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
@@ -39,36 +46,18 @@ class _View_orderState extends State<view_order> {
                       children: [
                         Row(
                           children: [
-                            Row(
-                              children: [
-                                const Text('ລະຫັດສັ່ງຊື້:',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16)),
-                                Text(
-                                  '${order.Curren_Order.id}',
-                                  style: const TextStyle(fontSize: 16),
-                                ),
-                                // const Text(
-                                //   'ວັນທີ: ',
-                                //   style: TextStyle(
-                                //       fontSize: 16,
-                                //       fontWeight: FontWeight.bold),
-                                // ),
-                                Text(
-                                    '      ${order.Curren_Order.date!.toDate().toString().substring(0, 10)}',
-                                    style: const TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold)),
-                              ],
+                            const Text('ລະຫັດສັ່ງຊື້ :',
+                                style: TextStyle(fontSize: 16)),
+                            Text(
+                              ' ${order.Curren_Order.id}',
+                              style: const TextStyle(fontSize: 16),
                             ),
                           ],
                         ),
                         Row(
                           children: [
-                            const Text('ຊື່ລູກຄ້າ:',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16)),
+                            const Text('ຊື່ລູກຄ້າ :',
+                                style: TextStyle(fontSize: 16)),
                             Text(
                               ' ${order.Curren_Order.nameCutommer}',
                               style: const TextStyle(fontSize: 16),
@@ -78,9 +67,10 @@ class _View_orderState extends State<view_order> {
                         Row(
                           children: [
                             const Text(
-                              'ເບີໂທ:',
+                              'ເບີໂທ: ',
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                fontSize: 16,
+                              ),
                             ),
                             Text('${order.Curren_Order.tel}',
                                 style: const TextStyle(fontSize: 16)),
@@ -89,9 +79,10 @@ class _View_orderState extends State<view_order> {
                         Row(
                           children: [
                             const Text(
-                              'ທີ່ຢູ່:',
+                              'ທີ່ຢຸ່ :',
                               style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                fontSize: 16,
+                              ),
                             ),
                             Text(' ${order.Curren_Order.address}',
                                 style: const TextStyle(fontSize: 16)),
@@ -101,8 +92,7 @@ class _View_orderState extends State<view_order> {
                           children: [
                             const Text(
                               'ຊື່ພະນັກງານ:',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
+                              style: TextStyle(fontSize: 16),
                             ),
                             Text(' ${order.emp_Ooder.name}',
                                 style: const TextStyle(fontSize: 16)),
@@ -112,174 +102,169 @@ class _View_orderState extends State<view_order> {
                     ),
                   ],
                 ),
-              )),
-          Padding(
-            padding: const EdgeInsets.only(top: 40),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  SizedBox(
-                      width: 60,
-                      child: Text(
-                        'ລຳດັບ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 17),
-                      )),
-                  SizedBox(
-                      width: 80,
-                      child: Text('ຊື່ສິນຄ້າ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17))),
-                  SizedBox(
-                      width: 80,
-                      child: Text('ປະເພດ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17))),
-                  SizedBox(
-                      width: 80,
-                      child: Text('ລາຄາຂາຍ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17))),
-                  SizedBox(
-                      width: 60,
-                      child: Text('ຈຳນວນ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17))),
-                  SizedBox(
-                      width: 80,
-                      child: Text('ລາຄາ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17))),
-                ],
               ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          Expanded(
-            child: order.Order_detill != null? ListView.builder(
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: Column(
-                      children: [
-                        Center(
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
+              Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      SizedBox(
+                          width: 60,
+                          child: Text(
+                            'ລຳດັບ',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16),
+                          )),
+                      SizedBox(
+                          width: 80,
+                          child: Text('ຊື່ສິນຄ້າ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16))),
+                      SizedBox(
+                          width: 80,
+                          child: Text('ຈຳນວນ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16))),
+                      SizedBox(
+                          width: 80,
+                          child: Text('ປະເພດ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16))),
+
+                      SizedBox(
+                          width: 70,
+                          child: Text('ລາຄາລວມ',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16))),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      return order.Order_detill != null
+                          ? Card(
+                        child: Column(
+                          children: [
+                            Center(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceAround,
                                   children: [
-                                    Row(
+                                    Column(
                                       children: [
-                                        SizedBox(
-                                            height: 50,
-                                            width: 60,
-                                            child: Text('${index + 1}')),
-                                        SizedBox(
-                                            height: 50,
-                                            width: 80,
-                                            child: Text(
-                                                '${order.Order_detill[index].Product!.nameProduct}')),
-                                        SizedBox(
-                                            height: 50,
-                                            width: 80,
-                                            child: Text(
-                                                '${order.Order_detill[index].Product!.category_id}')),
-                                        SizedBox(
-                                            height: 50,
-                                            width: 80,
-                                            child: Text(
-                                                '${NumberFormat.decimalPattern().format(order.Order_detill[index].Product!.price).toString()}')),
-                                        SizedBox(
-                                            height: 50,
-                                            width: 60,
-                                            child: Text(
-                                                '${NumberFormat.decimalPattern().format(order.Order_detill[index].amout)}')),
-                                        SizedBox(
-                                            height: 50,
-                                            width: 80,
-                                            child: Text(
-                                                '${NumberFormat.decimalPattern().format(order.Order_detill[index].sum).toString()}')),
+                                        Row(
+                                          children: [
+                                            SizedBox(
+                                                height: 50,
+                                                width: 60,
+                                                child: Text(
+                                                    '${index + 1}')),
+                                            SizedBox(
+                                                height: 50,
+                                                width: 80,
+                                                child: Text(
+                                                    '${order.Order_detill[index].Product!.nameProduct}')),
+                                            SizedBox(
+                                                height: 50,
+                                                width: 60,
+                                                child: Text(
+                                                    '${NumberFormat.decimalPattern().format(order.Order_detill[index].amout)}')),
+                                            SizedBox(
+                                                height: 50,
+                                                width: 80,
+                                                child: Text(
+                                                    '${order.Order_detill[index].Product!.category_id}')),
+                                            SizedBox(
+                                                height: 50,
+                                                width: 80,
+                                                child: Text(
+                                                    '${NumberFormat.decimalPattern().format(order.Order_detill[index].sum).toString()}')),
+                                          ],
+                                        ),
                                       ],
                                     ),
                                   ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                  );
-                },
-                itemCount: order.Order_detill.length):Container()
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                      )
+                          : Container();
+                    },
+                    itemCount: order.Order_detill.length),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Row(
+                    Column(
                       children: [
-                        const Text(
-                          'ຈຳນວນລວມ :',
-                          style: TextStyle(fontSize: 17),
+                        Row(
+                          children: [
+                            const Text(
+                              'ຈຳນວນລວມ :',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              ' ${order.Curren_Order.amouttotal} ເເກັດ',
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                          ],
                         ),
-                        Text(
-                          ' ${order.Curren_Order.amouttotal}',
-                          style: const TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                        const Text(
-                          ' ເເກັດ',
-                          style: TextStyle(fontSize: 17),
+                        Row(
+                          children: [
+                            const Text(
+                              ' ລາຄາທັ້ງໝົດ :',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              ' ${NumberFormat.decimalPattern().format(order.Curren_Order.sumtotal)} ກີບ',
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                          ],
                         )
                       ],
                     ),
-                    Row(
-                      children: [
-                        const Text(
-                          'ລາຄາລວມ :',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        Text(
-                          ' ${NumberFormat.decimalPattern().format(order.Curren_Order.sumtotal)} ',
-                          style: const TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
-                        ),
-                        const Text(
-                          'ກີບ',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                      ],
-                    )
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: element.main,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10))),
+                      child: const Text(
+                        'ບັນທຶກເປັນພີດີເອຟ',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      onPressed: () async {
+                        Bill_Order.save_Bill(order, context);
+                      },
+                    ),
                   ],
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      primary: element.main,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10))),
-                  child: const Text(
-                    'ບັນທຶກເປັນພີດີເອຟ',
-                    style: TextStyle(fontSize: 17),
-                  ),
-                  onPressed: () async {
-                    Bill_Order.save_Bill(order, context);
-                  },
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
+              )
+            ],
+          ),
+        )
+            : Container());
   }
 }

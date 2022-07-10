@@ -125,18 +125,21 @@ class _ProfileState extends State<Profile> {
                         ),
                         const SizedBox(height: 25),
                         Card(
-                          child: Row(
-                            children: [
-                              const Text(
-                                'ທີ່ຢູ່: ',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                '${emp.CurrentEmployee_loco!.address}',
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                            ],
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                const Text(
+                                  'ທີ່ຢູ່: ',
+                                  style: TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  '${emp.CurrentEmployee_loco!.address}',
+                                  style: const TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         const SizedBox(height: 25),
